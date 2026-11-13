@@ -12,9 +12,13 @@
     <button id="button">クリック</button>
 <script>
 
+function greet(){
+    alert('おはよう！');
+}
+
 // 無名関数に関数名 greet を付けて呼び出す
 $('#button').on('click', function(){
-    alert('おはよう！')
+    greet();
 })
 
 </script>
