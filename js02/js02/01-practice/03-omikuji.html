@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript | おみくじを配列にしてみよう</title>
+</head>
+<body>
+<h1>おみくじを配列にしてみよう</h1>
+<script>
+const num = Math.floor(Math.random() * 5);
+// 配列を使って書き換えてみよう！
+
+const result = ["大吉","中吉","小吉","吉","凶"];
+
+if (num === 0) {
+    console.log("大吉");
+} else if (num === 1) {
+    console.log("中吉");
+} else if (num === 2) {
+    console.log("小吉");
+} else if (num === 3) {
+    console.log("吉");
+} else if (num === 4) {
+    console.log("凶");
+}
+
+console.log(result[num]);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>AI 観光ガイド</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Bulma CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+</head>
+<body>
+<div class="container mt-5">
+    <div class="columns is-centered">
+        <div class="column is-8">
+            <!-- Location Status -->
+            <div
+                class="notification is-primary is-light"
+                id="location-info"
+            >
+                <p id="location-status">
+                    <i class="fas fa-spinner fa-pulse"></i>
+                    位置情報を取得中...
+                </p>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="box">
+                <div
+                    id="chat-area"
+                    style="
+                        height: 400px;
+                        overflow-y: auto;
+                        padding: 1rem;
+                    "
+                >
+                    <div class="message is-info">
+                        <div class="message-body">
+                            <i class="fas fa-robot"></i>
+                            こんにちは！現在位置を取得して、おすすめの観光スポットをご案内します！
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="field">
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        id="user-input"
+                        placeholder="追加で知りたいことがあれば入力してください..."
+                        rows="3"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- Button Area -->
+            <div class="field is-grouped is-grouped-centered">
+                <p class="control">
+                    <button
+                        class="button is-primary is-medium"
+                        id="get-location"
+                    >
+                        <span class="icon">
+                            <i class="fas fa-location-arrow"></i>
+                        </span>
+                        <span>現在位置で観光案内</span>
+                    </button>
+                </p>
+                <p class="control">
+                    <button class="button is-info is-medium" id="send">
+                        <span class="icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </span>
+                        <span>質問する</span>
+                    </button>
+                </p>
+                <p class="control">
+                    <button
+                        class="button is-light is-medium"
+                        id="clear"
+                    >
+                        <span class="icon">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        <span>クリア</span>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+// APIキーの情報を読み込む
+import { GEMINI_API_KEY } from './js/config.js';
+
+let currentLocation = null;
+let chatHistory = [];
+
+// 現在位置取得ボタン
+$('#get-location').on('click', function () {
+    if (currentLocation) {
+        // 位置情報がある場合は観光案内を開始
+        startTourGuide();
+    } else {
+        // 位置情報がない場合は取得してから観光案内
+        getCurrentLocation(true);
+    }
+});
+
+// 質問送信
+$('#send').on('click', function () {
+    const userMessage = $('#user-input').val();
+    if (!userMessage) return;
+
+    // ユーザーメッセージを表示
+    $('#chat-area').append(
+        `<div class='message user'>👤 ${userMessage}</div>`
+    );
+    $('#user-input').val('');
+
+    // 位置情報がある場合は含めて送信
+    const messageWithLocation = currentLocation
+        ? `${userMessage}\n\n[現在位置情報: 緯度${currentLocation.lat}, 経度${currentLocation.lng}]`
+        : userMessage;
+
+    callGeminiAPI(messageWithLocation);
+});
+
+// チャットクリア
+$('#clear').on('click', function () {
+    $('#chat-area').html(
+        `<div class='message ai'>🤖 こんにちは！現在位置を取得して、おすすめの観光スポットをご案内します！</div>`
+    );
+    chatHistory = [];
+});
+
+// 現在位置を取得する関数
+function getCurrentLocation(startGuideAfter = false) {
+    $('#location-info')
+        .removeClass('is-primary is-success is-danger')
+        .addClass('is-info');
+    $('#location-status').html(
+        '<i class="fas fa-spinner fa-pulse"></i> 位置情報を取得中...'
+    );
+
+    if (!navigator.geolocation) {
+        $('#location-info')
+            .removeClass('is-info')
+            .addClass('is-danger');
+        $('#location-status').html(
+            '<i class="fas fa-times"></i> お使いのブラウザは位置情報に対応していません'
+        );
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            // 位置情報取得成功
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            currentLocation = { lat, lng };
+
+            $('#location-info')
+                .removeClass('is-info')
+                .addClass('is-success');
+            $('#location-status').html(
+                `<i class="fas fa-map-marker-alt"></i> 現在位置: 緯度 ${lat.toFixed(4)}, 経度 ${lng.toFixed(4)}`
+            );
+
+            // ボタンが押された場合のみ観光案内を開始
+            if (startGuideAfter) {
+                startTourGuide();
+            }
+        },
+        function (error) {
+            // 位置情報取得失敗
+            $('#location-info')
+                .removeClass('is-info')
+                .addClass('is-danger');
+            let errorMessage =
+                '<i class="fas fa-exclamation-triangle"></i> 位置情報の取得に失敗しました: ';
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMessage +=
+                        '位置情報の使用が許可されていません';
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMessage += '位置情報が取得できません';
+                    break;
+                case error.TIMEOUT:
+                    errorMessage +=
+                        '位置情報の取得がタイムアウトしました';
+                    break;
+                default:
+                    errorMessage += '不明なエラーが発生しました';
+                    break;
+            }
+            $('#location-status').html(errorMessage);
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 300000, // 5分間はキャッシュを使用
+        }
+    );
+}
+
+// 観光案内を開始する関数
+function startTourGuide() {
+    if (!currentLocation) {
+        alert('位置情報が取得できていません');
+        return;
+    }
+
+    const locationPrompt = `
+        現在位置の緯度経度情報: ${currentLocation.lat}, ${currentLocation.lng}
+
+        この位置周辺のおすすめ観光スポットを教えてください。以下の形式で回答してお願いします：
+
+        🏛️ **観光スポット名**
+        - 📍 場所・アクセス方法
+        - ⏰ 営業時間・料金
+        - 🌟 おすすめポイント
+        - 📸 見どころ
+
+        できれば3-5箇所程度、徒歩や電車でアクセスしやすい場所を中心に紹介してください。
+        地元の人しか知らない穴場スポットがあれば、それも含めてください！
+    `;
+
+    $('#chat-area').append(`
+        <div class="message is-warning">
+            <div class="message-body">
+                <i class="fas fa-location-arrow"></i> 現在位置での観光案内をお願いします
+            </div>
+        </div>
+    `);
+
+    callGeminiAPI(locationPrompt);
+}
+
+// Gemini API呼び出し関数
+function callGeminiAPI(message) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
+    // ローディング表示
+    $('#chat-area').append(`
+        <div class="message is-info">
+            <div class="message-body">
+                <i class="fas fa-spinner fa-pulse"></i> 観光情報を検索中...
+            </div>
+        </div>
+    `);
+
+    axios
+        .post(url, {
+            contents: [
+                {
+                    parts: [{ text: message }],
+                },
+            ],
+        })
+        .then(function (response) {
+            // ローディングメッセージを削除
+            $('#chat-area .message:last').remove();
+
+            const aiResponse =
+                response.data.candidates[0].content.parts[0].text;
+            $('#chat-area').append(`
+                <div class="message is-success">
+                    <div class="message-body">
+                        <i class="fas fa-robot"></i> ${aiResponse.replace(/\n/g, '<br>')}
+                    </div>
+                </div>
+            `);
+            $('#chat-area').scrollTop(
+                $('#chat-area')[0].scrollHeight
+            );
+        })
+        .catch(function (error) {
+            // ローディングメッセージを削除
+            $('#chat-area .message:last').remove();
+
+            console.error('API Error:', error);
+            $('#chat-area').append(`
+                <div class="message is-danger">
+                    <div class="message-body">
+                        <i class="fas fa-exclamation-triangle"></i> エラーが発生しました。API キーを確認してください。
+                    </div>
+                </div>
+            `);
+        });
+}
+
+// ページ読み込み時に位置情報取得を開始（観光案内は手動）
+$(document).ready(function () {
+    // 自動で位置情報取得を開始（観光案内はしない）
+    setTimeout(() => getCurrentLocation(false), 1000);
+});
+</script>
+</body>
+</html>

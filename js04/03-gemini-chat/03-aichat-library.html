@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Gemini Chat</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+    <h1>Gemini AI チャット</h1>
+</header>
+<main>
+    <div id="chat-area">
+        <div class="message ai">
+            🤖 こんにちは！何でもお聞きください！
+        </div>
+    </div>
+    <textarea
+        id="user-input"
+        placeholder="メッセージを入力..."
+    ></textarea>
+    <ul>
+        <li id="send">送信</li>
+        <li id="clear">クリア</li>
+    </ul>
+</main>
+
+<script type="module">
+// -=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-==
+// axios との差分を確認しよう！
+// -=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-==
+
+// APIキーの情報を読み込む
+import { GEMINI_API_KEY } from './js/config.js';
+
+// ‼️ @google/genai ライブラリを読み込む
+import { GoogleGenAI } from 'https://cdn.jsdelivr.net/npm/@google/genai';
+
+// @google/genai ライブラリを初期化
+const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+
+let chatHistory = [];
+
+// メッセージ送信
+$('#send').on('click', function () {
+    const userMessage = $('#user-input').val(); // ユーザーメッセージを取得
+    if (!userMessage) return; // ユーザーメッセージが空の場合は処理を終了
+
+    $('#chat-area').append(`<div class='message user'>👤 ${userMessage}</div>`); // ユーザーメッセージを表示
+    $('#user-input').val(''); // ユーザーメッセージをクリア
+
+    // ★ Gemini API を実行する関数 callGeminiAPI を呼び出す
+    callGeminiAPI(userMessage);
+});
+
+// チャットクリア
+$('#clear').on('click', function () {
+    $('#chat-area').html(`<div class='message ai'>🤖 こんにちは！何でもお聞きください！</div>`); // 初期メッセージをセット
+    chatHistory = []; // 会話履歴をクリア
+});
+
+// Gemini API呼び出し関数
+function callGeminiAPI(message) {
+
+    // ‼️ @google/genai ライブラリを使用して Gemini API を呼び出す
+    genAI.models
+        .generateContent({
+            model: 'gemini-2.5-flash',
+            contents: message,
+        })
+        .then(function (response) {
+            const aiResponse = response.text; // ‼️ AIの回答を取得
+            $('#chat-area').append(`<div class='message ai'>🤖 ${aiResponse}</div>`); // AIの回答を表示
+        })
+        .catch(function (error) {
+            console.error('API Error:', error); // APIエラーを表示
+            $('#chat-area').append(`<div class="message ai">🤖 エラーが発生しました。API キーを確認してください。</div>`);
+        });
+}
+</script>
+</body>
+</html>

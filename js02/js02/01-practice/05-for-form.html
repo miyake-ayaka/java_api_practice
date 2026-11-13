@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>食べ物選択 - for文実習</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>好きな食べ物を選んでください</h1>
+
+<h2>選択肢をforEachメソッドで作成</h2>
+
+<div id="food-options">
+    <!-- ここに選択肢が表示されます -->
+</div>
+
+<h2>選択肢をハードコーディングで作成</h2>
+
+<!-- このような選択肢を作りたい -->
+<div id="food-options-hardcoded">
+    <input type="radio" name="food" value="ラーメン">ラーメン<br>
+    <input type="radio" name="food" value="寿司">寿司<br>
+    <input type="radio" name="food" value="カレー">カレー<br>
+    <input type="radio" name="food" value="ピザ">ピザ<br>
+    <input type="radio" name="food" value="ハンバーガー">ハンバーガー<br>
+</div>
+
+
+<script>
+// 食べ物の選択肢データ
+const foods = ['ラーメン', '寿司', 'カレー', 'ピザ', 'ハンバーガー'];
+
+// ヒント1: jQueryのappendメソッド
+// $('セレクタ').append('追加したいHTML');
+// 
+// ヒント2: ラジオボタンのHTMLをテンプレートリテラルで作成
+// `<input type="radio" name="food" value="${food}">${food}<br>`
+
+// forEachメソッドを使って書いてみよう！
+foods.forEach((food) => {
+    $('#food-options').append( `<input type="radio" name="food" value="${food}">${food}<br>`)
+});
+
+
+
+</script>
+</body>
+</html>

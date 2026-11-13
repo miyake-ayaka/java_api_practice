@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIを調べて表示してみよう</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">APIを調べて表示してみよう</h1>
+        <button id="execute" class="button is-primary mb-4">APIを実行</button>
+        <pre id="api-result" class="box">
+            APIのレスポンスがここに表示されます
+        </pre>
+        <div id="show" class="box">
+            <!-- 結果を表示するのに使ってみよう -->
+        </div>
+    </div>
+<script>
+// ----------------------------
+// Public API に掲載されているAPIを試してみよう！
+// https://github.com/public-apis/public-apis
+// 和訳版(情報がやや古い) https://zenn.dev/protoout/books/public-apis-api-get/viewer/03-abcdefg
+// ----------------------------
+
+// axiosを使って、ボタンがクリックされたら API の中身を取得して、 id=show の中に結果を表示してみよう！
+$("#execute").on("click", function () {
+    // ★ url を指定
+    const url = "https://dog.ceo/api/breeds/image/random"
+
+    // 対象のAPIが get通信の場合は get(), post通信の場合は post() を使用する
+
+    // ★ axios.get(url) または axios.post(url, {}) を使用
+    axios.get(url).then(function(response) {
+        const data = response.data; // データを取得
+
+        $("#api-result").text(JSON.stringify(data, null, 2)); // APIの取得結果を表示
+
+        // $("#show").append(data.message); // データを表示
+    })
+})
+
+</script>
+</body>
+</html>

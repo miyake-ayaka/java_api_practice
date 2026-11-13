@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Gemini Chat - ストリーミング版</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+    <h1>Gemini AI チャット | ストリーミング版</h1>
+</header>
+<main>
+    <div id="chat-area">
+        <div class="message ai">
+            🤖 こんにちは！何でもお聞きください！
+        </div>
+    </div>
+    <textarea
+        id="user-input"
+        placeholder="メッセージを入力..."
+    ></textarea>
+    <ul>
+        <li id="send">送信</li>
+        <li id="clear">クリア</li>
+    </ul>
+</main>
+
+<script type="module">
+// APIキーの情報を読み込む
+import { GEMINI_API_KEY } from './js/config.js';
+
+// @google/genai ライブラリを読み込む
+import { GoogleGenAI } from 'https://cdn.jsdelivr.net/npm/@google/genai';
+
+// @google/genai ライブラリを初期化
+const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+
+let chatHistory = [];
+
+// メッセージ送信
+$('#send').on('click', function () {
+    const userMessage = $('#user-input').val(); // ユーザーメッセージを取得
+    if (!userMessage) return; // ユーザーメッセージが空の場合は処理を終了
+
+    $('#chat-area').append(`<div class='message user'>👤 ${userMessage}</div>`); // ユーザーメッセージを表示
+    $('#user-input').val(''); // ユーザーメッセージをクリア
+
+    // ★ Gemini API を実行する関数 callGeminiAPI を呼び出す
+    callGeminiAPI(userMessage);
+});
+
+// チャットクリア
+$('#clear').on('click', function () {
+    $('#chat-area').html(`<div class='message ai'>🤖 こんにちは！何でもお聞きください！</div>`); // 初期メッセージをセット
+    chatHistory = []; // 会話履歴をクリア
+});
+
+// Gemini API ストリーミング呼び出し関数
+async function callGeminiAPI(message) {
+
+    // AIメッセージの枠を先に作成
+    const aiMessageId = `ai-message-${Date.now()}`;
+    $('#chat-area').append(
+        `<div class='message ai' id='${aiMessageId}'>🤖 <span class="typing-indicator">考え中...</span></div>`
+    );
+
+    try {
+        // ストリーミングでレスポンスを取得
+        const responseStream = await genAI.models.generateContentStream({
+            model: 'gemini-2.5-flash',
+            contents: message,
+            config: { thinkingConfig: { thinkingBudget: 0 } } // ストリーミングをわかりやすくするために思考時間を0にする
+        });
+
+        // タイピングインジケーターを削除
+        $(`#${aiMessageId} .typing-indicator`).remove();
+
+        let aiResponse = '';
+
+        // ストリームからデータを逐次取得
+        for await (const chunk of responseStream) {
+            aiResponse += chunk.text;
+
+            // リアルタイムでテキストを更新
+            $(`#${aiMessageId}`).html(
+                `🤖 ${aiResponse}<span class="cursor">|</span>`
+            );
+
+            // チャットエリアを最下部にスクロール
+            $('#chat-area').scrollTop(
+                $('#chat-area')[0].scrollHeight
+            );
+        }
+
+        // 最終的にカーソルを削除
+        $(`#${aiMessageId} .cursor`).remove();
+    } catch (error) {
+        console.error('API Error:', error);
+        $(`#${aiMessageId}`).html(
+            `🤖 エラーが発生しました。API キーを確認してください。`
+        );
+    }
+}
+</script>
+</body>
+</html>

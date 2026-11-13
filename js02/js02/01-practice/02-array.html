@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript | 配列</title>
+</head>
+<body>
+<h1>配列</h1>
+<script>
+let weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+
+// weekdays を console.log で表示 してみよう
+console.log(weekdays);
+
+// "日" を取り出してみよう
+console.log(weekdays[0]);
+
+
+// 0番目の要素を変更してみよう
+weekdays[0] = "sun"
+console.log(weekdays);
+
+// 配列の長さを表示
+console.log(weekdays["length"]);
+console.log(weekdays.length);
+
+// 配列操作（push, unshift）
+weekdays.push("1","3")
+console.log(weekdays)
+weekdays.unshift("2","4")
+console.log(weekdays)
+
+
+</script>
+</body>
+</html>

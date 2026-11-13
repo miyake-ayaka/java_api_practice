@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <title>Web Speech API</title>
+</head>
+<body>
+    <section class="section container">
+        <h1 class="title">Web Speech API</h1>
+        <div class="field is-grouped">
+            <p class="control is-expanded">
+                <input id="text" class="input" type="text" placeholder="喋って欲しい文章を入力...">
+            </p>
+            <p class="control">
+                <a id="send" class="button is-info">
+                    送信する
+                </a>
+            </p>
+        </div>
+    </section>
+<script>
+const synth = window.speechSynthesis; // WebSpeech API を準備
+const utterance = new SpeechSynthesisUtterance(); // WebSpeech API 設定用のライブラリ
+utterance.lang = 'ja-JP'; // 日本語に設定 （英語にする場合は 'en-US'）
+utterance.rate = 1.0; // 再生速度
+utterance.pitch = 1.0; // 音の高さ
+
+$('#send').on('click', function () {
+    const text = $('#text').val(); // #text 内の入力情報を取得
+    // テキスト内容をセットして喋ってもらう
+    utterance.text = text;
+    synth.speak(utterance);
+});
+</script>
+    
+</body>
+</html>

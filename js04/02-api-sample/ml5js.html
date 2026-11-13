@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>ml5.js</title>
+    <style>
+        #canvas-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<section class="section">
+    <h1 class="title">ml5.js 画像分類</h1>
+    <p>画像をクリックして選択すると、AIが何の画像か判定します</p>
+
+    <div class="field">
+        <label class="label">画像ファイルを選択してください</label>
+        <div class="control">
+            <div class="file">
+                <label class="file-label">
+                    <input
+                        type="file"
+                        id="fileInput"
+                        accept="image/*"
+                        class="file-input"
+                    />
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label"> 画像を選択 </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <canvas
+        id="canvas"
+        style="display: none; border: 1px solid #ccc; margin: 20px 0"
+    ></canvas>
+
+    <div id="result" class="box">画像を選択してください</div>
+</section>
+
+<script>
+let classifier;
+let canvas, ctx;
+
+// ml5.jsモデル読み込み
+$(document).ready(async () => {
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d');
+
+    try {
+        // Promise形式でモデル読み込み
+        updateResult('AIモデルを読み込み中...');
+        classifier = await ml5.imageClassifier('MobileNet');
+        console.log('MobileNetモデルの読み込み完了');
+        console.log(classifier);
+        updateResult(
+            'モデル読み込み完了！画像を選択してください。'
+        );
+    } catch (error) {
+        console.error('モデル読み込みエラー:', error);
+        updateResult('モデルの読み込みに失敗しました');
+    }
+
+    // 画像ファイルが選択された時
+    $('#fileInput').on('change', async function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = async () => {
+                    // キャンバスサイズを調整
+                    let w = img.width > 400 ? 400 : img.width;
+                    let h = img.height > 300 ? 300 : img.height;
+                    canvas.width = w;
+                    canvas.height = h;
+
+                    // 画像を描画
+                    ctx.drawImage(img, 0, 0, w, h);
+                    $('#canvas').show();
+
+                    // 画像を分類
+                    updateResult('分析中...');
+
+                    // classifierが準備できているかチェック
+                    if (
+                        !classifier ||
+                        typeof classifier.classify !== 'function'
+                    ) {
+                        updateResult(
+                            'AIモデルがまだ読み込み中です。少し待ってから再試行してください。'
+                        );
+                        return;
+                    }
+
+                    try {
+                        // Promise形式で分類実行
+                        const results =
+                            await classifier.classify(img);
+                        console.log('分類結果:', results);
+
+                        // 結果を表示
+                        let resultText =
+                            '<strong>分類結果:</strong><br>';
+                        results
+                            .slice(0, 3)
+                            .forEach((result, index) => {
+                                const confidence = (
+                                    result.confidence * 100
+                                ).toFixed(1);
+                                resultText += `${index + 1}. ${result.label}: ${confidence}%<br>`;
+                            });
+                        updateResult(resultText);
+                    } catch (err) {
+                        updateResult(
+                            '分類処理でエラーが発生しました'
+                        );
+                        console.error('分類エラー:', err);
+                    }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+function updateResult(text) {
+    $('#result').html(text);
+}
+</script>
+</body>
+</html>

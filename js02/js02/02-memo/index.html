@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>メモアプリ</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css" />
+</head>
+<body>
+<header>
+    <h1>メモアプリ</h1>
+</header>
+<main>
+    <input type="text" id="key" placeholder="タイトル" />
+    <textarea id="memo" placeholder="メモ内容"></textarea>
+    <ul>
+        <li id="save">保存</li>
+        <li id="clear">クリア</li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>メモ</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <!-- ここに追加データが挿入される -->
+        </tbody>
+    </table>
+</main>
+<script>
+//1.Save クリックイベント
+$("#save").on("click", function () {
+    // #key, #memo から入力内容を取得
+    const key = $("#key").val();
+    const value = $("#memo").val();
+
+    // 入力内容をlocalStorageに保存
+    localStorage.setItem(key, value);
+
+
+    // 一覧に追加するHTMLを生成
+    const html = `<tr><th>${key}</th><td>${value}</td></tr>`;
+    $("#list").append(html);
+});
+
+//2.clear クリックイベント
+$("#clear").on("click", function () {
+    // 全データを削除
+    localStorage.clear();
+    // 一覧を空にする
+    $("#list").empty();
+});
+
+//3.ページ読み込み：保存データ取得表示
+// 08-localstorage-allget.html を参考に作ってみよう！
+for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    console.log(key, value);
+    $('#list').append(`<tr><th>${key}</th><th>${value}</th></tr>`)
+
+}
+
+
+</script>
+<footer><small>G's</small></footer>
+</body>
+</html>

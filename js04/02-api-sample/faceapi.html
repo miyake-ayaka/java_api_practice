@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <title>
+        Face-API.js</title>
+    <style>
+        #video { border: 1px solid red; margin-right: 10px; }
+        #canvas { border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <h1 class="title">Face-API.js</h1>
+        <p>顔の輪郭、ランドマーク、表情を検出します。</p>
+        
+        <div class="field is-grouped" style="margin: 20px 0;">
+            <button id="startBtn" class="button is-primary mr-2">開始</button>
+            <button id="stopBtn" class="button is-danger" disabled>停止</button>
+        </div>
+
+        <div id="status" class="notification is-info">モデル読み込み中...</div>
+
+        <div>
+            <video id="video" width="640" height="480" autoplay muted></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+        </div>
+    </section>
+
+<script>
+let video, canvas, isRunning = false;
+
+// モデル読み込み
+async function loadModels() {
+    const MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.13/model';
+    await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+        faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL)
+    ]);
+    $('#status').text('準備完了');
+}
+
+// カメラ開始
+async function startCamera() {
+    video = document.getElementById('video');
+    canvas = document.getElementById('canvas');
+    
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+    
+    video.addEventListener('canplay', () => {
+        faceapi.matchDimensions(canvas, { width: 640, height: 480 });
+        detectFaces();
+    });
+}
+
+// 顔検出
+async function detectFaces() {
+    if (!isRunning) return;
+    
+    const detections = await faceapi
+        .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceExpressions();
+    
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, 640, 480);
+    ctx.drawImage(video, 0, 0, 640, 480);
+    
+    const resized = faceapi.resizeResults(detections, { width: 640, height: 480 });
+    faceapi.draw.drawDetections(canvas, resized);
+    faceapi.draw.drawFaceLandmarks(canvas, resized);
+    faceapi.draw.drawFaceExpressions(canvas, resized);
+    
+    setTimeout(detectFaces, 100);
+}
+
+// カメラ停止
+function stopCamera() {
+    isRunning = false;
+    if (video?.srcObject) {
+        video.srcObject.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+    }
+    canvas.getContext('2d').clearRect(0, 0, 640, 480);
+}
+
+// イベント設定
+$(async () => {
+    await loadModels();
+    
+    $('#startBtn').click(async () => {
+        isRunning = true;
+        $('#startBtn').prop('disabled', true);
+        $('#stopBtn').prop('disabled', false);
+        await startCamera();
+    });
+    
+    $('#stopBtn').click(() => {
+        stopCamera();
+        $('#startBtn').prop('disabled', false);
+        $('#stopBtn').prop('disabled', true);
+    });
+});
+</script>
+</body>
+</html>

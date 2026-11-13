@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>チャットアプリ</title>
+
+    <!-- CSS読み込み -->
+    <link rel="stylesheet" href="css/sample.css" />
+
+    <!-- jQuery読み込み -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<main>
+    <!-- 入力エリア -->
+    <div class="input-section">
+        <div class="name-input">
+            <label for="name">お名前:</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="あなたの名前を入力してください"
+            />
+        </div>
+        <div class="message-input">
+            <label for="message">メッセージ:</label>
+            <textarea
+                id="message"
+                placeholder="メッセージを入力してください"
+                rows="3"
+            ></textarea>
+        </div>
+        <ul class="button-list">
+            <li id="send-button">送信</li>
+            <li id="clear-button">クリア</li>
+        </ul>
+    </div>
+
+    <!-- チャット表示エリア -->
+    <div class="chat-section">
+        <h2>チャット履歴</h2>
+        <div id="chat-display"></div>
+    </div>
+</main>
+
+<!-- import / export が使えるように module モードを利用する -->
+<script type="module">
+// ----------------------------
+// Firebase のメソッドを事前読み込み
+// ----------------------------
+
+// firebaseの初期化メソッドを読み込み
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js';
+// firebase realtime database で使うことができるメソッドを読み込み
+import { getDatabase, ref, push, onChildAdded, remove, onChildRemoved } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js';
+
+
+// ----------------------------
+// Firebase 設定情報読み込み
+// ----------------------------
+const firebaseConfig = {
+    apiKey: 'xxxxxxx',
+    authDomain: 'xxxxxxx.firebaseapp.com',
+    databaseURL:
+        'https://xxxxxxx-default-rtdb.firebaseio.com',
+    projectId: 'xxxxxxx',
+    storageBucket: 'xxxxxxx.firebasestorage.app',
+    messagingSenderId: 'xxxxxxx',
+    appId: '1:xxxxxxx:web:36702df923de45639b3252',
+};
+
+// ----------------------------
+// Firebase / Firebase Realtime Database の初期化
+// ----------------------------
+
+// Firebaseアプリの初期化（設定情報を適用）
+const app = initializeApp(firebaseConfig);
+
+// Firebase Realtime Database インスタンスを取得
+const db = getDatabase(app);
+
+// 'messages' パスへの参照を作成
+//    → この参照を通じてメッセージの追加・取得・削除を行う
+const messagesRef = ref(db, 'messages');
+
+
+// ----------------------------
+// 送信ボタンクリック時の処理
+// ----------------------------
+
+$('#send-button').on('click', function () {
+    // 入力内容を取得
+    const name = $('#name').val();
+    const message = $('#message').val();
+
+    // メッセージデータを作成
+    const data = {
+        name: name,
+        message: message,
+        createdAt: new Date().toLocaleString('ja-JP'),
+    };
+
+    // messages/{ユニークID} の配下にメッセージデータを送信
+    const newMessageRef = push(messagesRef, data); // push(参照, メッセージデータ)
+});
+
+// ----------------------------
+// メッセージ受信イベント
+// ----------------------------
+
+onChildAdded(messagesRef, function (snapshot) {
+    const data = snapshot.val(); // メッセージデータを取得
+    const key = snapshot.key; // ユニークIDを取得
+    const html = `<p id="${key}" class="message-item">${data.name}: ${data.message} - ${data.createdAt}</p>`;
+    $('#chat-display').append(html); // #chat-display の最後に追加
+});
+
+// ----------------------------
+// おまけ: メッセージ削除ボタンクリック時の処理
+// ----------------------------
+
+$('body').on('click', '.message-item', function () {
+    const isDelete = confirm('メッセージを削除しますか？');
+    // はいがクリックされた場合
+    if (isDelete) {
+        const key = $(this).attr('id'); // クリックされた要素自体のid名（ユニークID）を取得
+        const targetMessageRef = ref(db, `messages/${key}`); // 削除対象のメッセージ参照を取得
+        remove(targetMessageRef); // メッセージを削除
+    }
+});
+
+// ----------------------------
+// おまけ: メッセージ削除時の処理
+// ----------------------------
+
+onChildRemoved(messagesRef, function (data) {
+    const key = data.key; // ユニークIDを取得
+    $(`#${key}`).remove(); // メッセージの表示を削除
+});
+</script>
+</body>
+</html>

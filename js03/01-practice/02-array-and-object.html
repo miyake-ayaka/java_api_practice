@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript | 配列とオブジェクト</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>配列とオブジェクト</h1>
+<ul id="user-list"></ul>
+<script>
+// ユーザ一覧（オブジェクトの配列）
+const users = [
+    { name: 'ラッコ', age: 5, region: '日本' },
+    { name: 'アザラシ', age: 3, region: 'カナダ' },
+    { name: 'オットセイ', age: 7, region: 'アメリカ' },
+    { name: 'ねこ', age: 100, region: 'カナダ' },
+
+];
+
+// オブジェクトの配列へのアクセス練習
+// - "ラッコ" を console.log で表示
+console.log(users[0].name)
+
+
+// - カナダ在住のユーザーの年齢を console.log で表示
+users.forEach((user) => {
+    if(user.region === "カナダ"){
+        console.log(user.age);
+    }
+    
+});
+
+// オブジェクトの配列を #user-list に表示
+users.forEach((user) => {
+    $('#user-list').append(`<li>${user.name}  (${user.age}歳、${user.region}在住)</li>`);
+});
+
+</script>
+</body>
+</html>

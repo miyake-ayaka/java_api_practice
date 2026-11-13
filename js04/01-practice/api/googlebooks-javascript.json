@@ -1,0 +1,787 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 1000000,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "yzjREAAAQBAJ",
+            "etag": "p/HTMzwA8iM",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/yzjREAAAQBAJ",
+            "volumeInfo": {
+                "title": "Python／JavaScriptによるOpen AIプログラミング",
+                "authors": ["掌田津耶乃"],
+                "publisher": "ラトルズ",
+                "publishedDate": "2023-08-18",
+                "description": "※この商品はタブレットなど大きいディスプレイを備えた端末で読むことに適しています。また、文字だけを拡大することや、文字列のハイライト、検索、辞書の参照、引用などの機能が使用できません。 OpenAI API は、ChatGPTの開発元が提供するAIモデル利用のためのAPIです。 これを利用することで、ChatGPTで使われている高度なAIモデルを自分のプログラムから簡単に利用できるようになります。 ただ「質問して答える」だけではありません。チャットのようにAIと連続したやり取りをする。 特定の用途に特化したAI ボットを作る。イメージ生成を行わせる。 自社製品の情報を学習させたオリジナルのAIモデルを作成し利用する。用意したデータを分析し、「意味」を調べて処理をする。 こうしたことがAPIを使えば驚くほど簡単に行えます。 本書では「Python」と「Node.js」を使い、API利用の方法を説明していきます。 それ以外の言語から利用する場合についても、各AIモデルごとにAPIを直接コールする方法を説明しています。 また、昨今のノーコードブームを考慮し、Power Automate、PowerApps、AppSheet、Click といったノーコードツールや、 Excel/OfficeスクリプトやGoogle Apps ScriptからAPIを利用する方法についても説明しています。 AI を避けては通れない時代。その時代にプログラムを組むためには、「AI を使いこなす武器」が必要です。 OpenAI APIというAI界最強の武器を使って、あなたのプログラムをAI化しましょう！ Chapter 1 OpenAI APIを開始しよう 1.1. OpenAI APIの利用準備 1.2. OpenAIのアカウント設定 1.3. Python/Node.jsによるAPI利用 1.4. WebアプリケーションにおけるAPIの利用 Chapter 2 API利用の基本をマスターしよう 2.1. PythonにおけるAPI利用の基本 2.2. Node.js におけるAPI利用の基本 2.3. Web APIを直接利用する Chapter 3 プロンプトデザイン 3.1. 基本のプロンプト 3.2. IDとキャラクタ設定 3.3. その他のプロンプト機能 3.4. コマンド定義と出力形式 Chapter 4 Completionを探究する 4.1. エラー処理・モデル・編集API 4.2. オプション引数の利用 Chapter 5 Chat CompletionとTranscription 5.1. Chat Completionの基本をマスターする 5.2. Speech to textによる音声入力 Chapter 6 Image Generation 6.1. Image Generationの基本 6.2. イメージの編集 6.3. イメージのバリエーション Chapter 7 モデルとデータのチューニング 7.1. ファインチューニング 7.2. モデレーションによるポリシーチェック 7.3. Embeddingとセマンティック類似性 Chapter 8 Power Platform環境からのAPI利用 8.1. Power Automateでの利用 8.2. PowerAppsでの利用 8.3. Power Automate for Desktopでの利用 Chapter 9 ノーコード／マクロからの利用 9.1. Clickでの利用 9.2. Google Apps Scriptでの利用 9.3. Google AppSheetでの利用 9.4. Excel/Officeスクリプトでの利用",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "PKEY:BT000140956600100101900209"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 304,
+                "printType": "BOOK",
+                "categories": ["Computers"],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.3.1.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=yzjREAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=yzjREAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=yzjREAAAQBAJ&pg=PA78&dq=JavaScript&hl=&cd=1&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=yzjREAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=yzjREAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 2420,
+                    "currencyCode": "JPY"
+                },
+                "retailPrice": {
+                    "amount": 2178,
+                    "currencyCode": "JPY"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=yzjREAAAQBAJ&rdid=book-yzjREAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 2420000000,
+                            "currencyCode": "JPY"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 2178000000,
+                            "currencyCode": "JPY"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/Python_JavaScript%E3%81%AB%E3%82%88%E3%82%8BOpen_AI%E3%83%97%E3%83%AD-sample-epub.acsm?id=yzjREAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/Python_JavaScript%E3%81%AB%E3%82%88%E3%82%8BOpen_AI%E3%83%97%E3%83%AD-sample-pdf.acsm?id=yzjREAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=yzjREAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> で Web ページを操作する基本ですので、説明は省略しましょう。クライアントからの AP 利用の危険性これで、 Web ページから簡単な <b>JavaScript</b> のスクリプトで API にアクセスできるようになりました。「いちいち Web アプリを作るより簡単で&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "EtpBEQAAQBAJ",
+            "etag": "esFp55CYmb8",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/EtpBEQAAQBAJ",
+            "volumeInfo": {
+                "title": "いきなりプログラミング JavaScript",
+                "authors": ["高岡 佑輔"],
+                "publisher": "翔泳社",
+                "publishedDate": "2025-01-24",
+                "description": "読みはじめて即・アプリが作れる! 「覚える」よりも、「作る」が先! プログラミングの「楽しい!」を詰め込んだ JavaScript入門書が登場! 「プログラミングって、文法を覚えたり知識を詰め込んだりするのが大変そう...」そんなイメージを持っているあなたに朗報! この本では、プログラミングの地道な下準備をすべて「スキップ」。いきなり自分のアプリやゲームを作り始められる新感覚の入門書です。手っ取り早くアプリを作っているうちに、プログラミングの基本知識が自然と身につきます。 作成するアプリはバラエティ豊かな計6種。 ●一生分の運勢を一瞬で占える!「100年おみくじ」 ●自己紹介を勝手に生成!「自己PRメーカー」 ●AIが必ず負けてくれる!「接待○×ゲーム」 ●面白いダジャレを3段階で判定!「ダジャレ審議会」 ●誰でも教科書に載れる!「偉人なりきりメーカー」 ●声だけでキャラクターを簡単操作!「スイカ割り応援上映」 1章ごとに1つのアプリを取り上げ、完成までの手順を丁寧にフォロー。ダウンロードできるお手本ファイルもあるので、迷うことなくアプリが完成します。 プログラミングの「楽しさ」と「ワクワク」をとことん凝縮した、はじめからおわりまで退屈知らずの一冊です! 【こんな人におすすめ!】 ●とにかく楽しく学習をはじめたい初心者 ●堅くて真面目な参考書では学習が続かない人 ●コツコツした学習が苦手な人 ●手っ取り早く自分のアプリやゲームが作りたい人 ●ありきたりなサンプルアプリの作成はつまらない人 ※本電子書籍は同名出版物を底本として作成しました。記載内容は印刷出版当時のものです。 ※印刷出版再現のため電子書籍としては不要な情報を含んでいる場合があります。 ※印刷出版とは異なる表記・表現の場合があります。予めご了承ください。 ※プレビューにてお手持ちの電子端末での表示状態をご確認の上、商品をお買い求めください。 (翔泳社)",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9784798191249"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "4798191248"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 219,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.219.14.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=EtpBEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=EtpBEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=EtpBEQAAQBAJ&pg=PA50&dq=JavaScript&hl=&cd=2&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=EtpBEQAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=EtpBEQAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 2420,
+                    "currencyCode": "JPY"
+                },
+                "retailPrice": {
+                    "amount": 2178,
+                    "currencyCode": "JPY"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=EtpBEQAAQBAJ&rdid=book-EtpBEQAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 2420000000,
+                            "currencyCode": "JPY"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 2178000000,
+                            "currencyCode": "JPY"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/%E3%81%84%E3%81%8D%E3%81%AA%E3%82%8A%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0_JavaSc-sample-pdf.acsm?id=EtpBEQAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=EtpBEQAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> を利用します。<b>JavaScript</b> を HTML に読み込ませる文を書き加えましょう。&lt; ! --ここで <b>JavaScript</b> を読み込む-- &gt;の下に以下のコードを書き加えます。 Code 2-3-1 index.html 4 &lt; head &gt; 5 &lt; title &gt;自己 PR メーカー&lt; / title &gt; 6 &lt; meta&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "tXfsktzCaMMC",
+            "etag": "RZ/MUUNNOdQ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/tXfsktzCaMMC",
+            "volumeInfo": {
+                "title": "JavaScript puroguramingu nyūmon",
+                "authors": ["大津真"],
+                "publisher": "株式会社 オーム社",
+                "publishedDate": "2006-09",
+                "description": "JavaScriptの基礎を身に付けるために",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "4274066606"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9784274066603"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 436,
+                "printType": "BOOK",
+                "categories": ["Reference"],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.3.5.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=tXfsktzCaMMC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=tXfsktzCaMMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=tXfsktzCaMMC&pg=PA209&dq=JavaScript&hl=&cd=3&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=tXfsktzCaMMC&dq=JavaScript&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/JavaScript_puroguramingu_ny%C5%ABmon.html?hl=&id=tXfsktzCaMMC"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/JavaScript_puroguramingu_ny%C5%ABmon-sample-pdf.acsm?id=tXfsktzCaMMC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=tXfsktzCaMMC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> 」といった文字列を、「 <b>JavaScript</b> 」に揃えます。 replace.html &lt; html &gt; &lt; head &gt; ( replace ( )メソッドの使用例) DL &lt; meta http - equiv = &quot; Content - Script - Type &quot; content = &quot; text / <b>javascript</b> &quot; &gt; &lt; title &gt; replace&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "YPYeBAAAQBAJ",
+            "etag": "MR8Ybx22mDQ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/YPYeBAAAQBAJ",
+            "volumeInfo": {
+                "title": "スラスラわかるJavaScript",
+                "authors": ["生形可奈子"],
+                "publisher": "翔泳社",
+                "publishedDate": "2013-03-15",
+                "description": "知識ゼロからJavaScriptがわかる 初めてプログラミングを学ぶ人を対象にした“スラスラわかる”シリーズの新刊です。本書では、「JavaScript関連の知識はゼロ」という状態から、JavaScriptの基礎知識や作法、基本構文、基本テクニックなどを無理なく習得し、かつプログラムが自力で作れるようになるところまで、しっかりとフォローします。JavaScriptの基礎固めをしっかりしたい方だけでなく、ほかの入門書で挫折した方やプログラミングに苦手意識を持っている方にもおすすめの一冊です。",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9784798125831"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "4798125830"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 414,
+                "printType": "BOOK",
+                "categories": ["Reference"],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.479.1.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=YPYeBAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=YPYeBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=YPYeBAAAQBAJ&pg=PA2&dq=JavaScript&hl=&cd=4&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=YPYeBAAAQBAJ&dq=JavaScript&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/%E3%82%B9%E3%83%A9%E3%82%B9%E3%83%A9%E3%82%8F%E3%81%8B%E3%82%8BJavaScript.html?hl=&id=YPYeBAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/%E3%82%B9%E3%83%A9%E3%82%B9%E3%83%A9%E3%82%8F%E3%81%8B%E3%82%8BJavaScript-sample-pdf.acsm?id=YPYeBAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=YPYeBAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b>にお任せあれ!う〜ん 1 1 <b>JavaScript</b>を使うと、画像や文字を動かしたり、ページの一部だけ表示内容を更新したりできます一工夫欲しいなぁ... 2 わっ!!まずは<b>JavaScript</b>の習得に必要な知識をおさえておきましょうおっ!写真が横に流れていく&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "sLiKBgAAQBAJ",
+            "etag": "+FcjPdIwJY4",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/sLiKBgAAQBAJ",
+            "volumeInfo": {
+                "title": "Adobe JavaScriptリファレンス",
+                "authors": ["古籏 一浩"],
+                "publisher": "インプレスR&D",
+                "publishedDate": "2015-02-06",
+                "description": "デザイナー、イラストレーター、DTPオペレータなどAdobeユーザーのための作業を自動化するAdobe JavaScriptのコマンドリファレンスです。500あまりのAdobe JavaScriptコマンドを32のジャンルに分けて解説します。サンプル図版多数掲載。なお、本書はCS6ベースで作成しています。CS5以前のバージョンでは一部の命令が動作しない場合があります。",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 896,
+                "printType": "BOOK",
+                "categories": ["Technology & Engineering"],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.2.4.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=sLiKBgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=sLiKBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=sLiKBgAAQBAJ&pg=PT712&dq=JavaScript&hl=&cd=5&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=sLiKBgAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=sLiKBgAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 3520,
+                    "currencyCode": "JPY"
+                },
+                "retailPrice": {
+                    "amount": 3168,
+                    "currencyCode": "JPY"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=sLiKBgAAQBAJ&rdid=book-sLiKBgAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 3520000000,
+                            "currencyCode": "JPY"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 3168000000,
+                            "currencyCode": "JPY"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/Adobe_JavaScript%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9-sample-epub.acsm?id=sLiKBgAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/Adobe_JavaScript%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9-sample-pdf.acsm?id=sLiKBgAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=sLiKBgAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> , iPhone , Android , / ED &lt; script src = &quot; http://www.google-analytics.com/urchin.js &quot; type = &quot; text / <b>javascript</b> &quot; &gt; &lt; / script &gt; &lt; script type = &quot; text / <b>javascript</b> &quot; &gt; uacct &quot; UA - 53199-1 &quot; : urchinTracker&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "O323DwAAQBAJ",
+            "etag": "wGqIuAXGmRc",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/O323DwAAQBAJ",
+            "volumeInfo": {
+                "title": "ちゃんと使える力を身につける　JavaScriptのきほんのきほん",
+                "authors": ["大澤文孝"],
+                "publisher": "マイナビ出版",
+                "publishedDate": "2017-11-21",
+                "description": "※この商品はタブレットなど大きいディスプレイを備えた端末で読むことに適しています。また、文字だけを拡大することや、文字列のハイライト、検索、辞書の参照、引用などの機能が使用できません。 豊富な図解で、仕組みをていねいに解説！ JavaScriptは、Webブラウザで実行するプログラムを書くために生まれたプログラミング言語です。ウィンドウを開いたり、クリックするとページの一部が変わったりするギミックを実現するのに欠かせません。また最近では、サーバやIoT分野でのプログラミングにも使われていたりと、使用できる分野も広い言語です。 本書では、これからJavaScriptを学ぶ方や、またはJavaScriptを書いたことはあるけれど、いまいちよく理解できない点がある方を対象に、ゼロからJavaScriptを解説します。 基本的なところから少しずつ、小さなサンプルを動かしながら学んでいきます。プログラミングがまったく初めての方でも無理なく学習することができるように、解説はたくさんの図解を使って行っています。 JavaScriptの基本的な文法はもちろん、オブジェクト、関数、配列、イベントといった、JavaScriptを理解する上で重要な概念もしっかり説明していきます。 また、サーバと連携してプログラムを動かすAjaxや、イベントの伝達の方法の理解といった、少し難しい内容にもチャレンジし、より実践的なプログラミングの力が付けられるように配慮しています。 初心者だけれども、開発の現場に参加することまで見据えて、しっかりと応用の効く基礎力を身に付けたい方にオススメの1冊です。",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "PKEY:BT000047968000100101900209"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 324,
+                "printType": "BOOK",
+                "categories": ["Computers"],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "2.5.3.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=O323DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=O323DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=O323DwAAQBAJ&printsec=frontcover&dq=JavaScript&hl=&cd=6&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=O323DwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=O323DwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 2728,
+                    "currencyCode": "JPY"
+                },
+                "retailPrice": {
+                    "amount": 2455,
+                    "currencyCode": "JPY"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=O323DwAAQBAJ&rdid=book-O323DwAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 2728000000,
+                            "currencyCode": "JPY"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 2455000000,
+                            "currencyCode": "JPY"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E4%BD%BF%E3%81%88%E3%82%8B%E5%8A%9B%E3%82%92%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%91-sample-epub.acsm?id=O323DwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E4%BD%BF%E3%81%88%E3%82%8B%E5%8A%9B%E3%82%92%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%91-sample-pdf.acsm?id=O323DwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=O323DwAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "※この商品はタブレットなど大きいディスプレイを備えた端末で読むことに適しています。また、文字だけを拡大することや、文字列のハイライト、検索、辞書の参照、引用など ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "2weL0iAfrEMC",
+            "etag": "MF9Illqv8Ck",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/2weL0iAfrEMC",
+            "volumeInfo": {
+                "title": "JavaScript: The Definitive Guide",
+                "subtitle": "The Definitive Guide",
+                "authors": ["David Flanagan"],
+                "publisher": "\"O'Reilly Media, Inc.\"",
+                "publishedDate": "2006-08-17",
+                "description": "This Fifth Edition is completely revised and expanded to cover JavaScript as it is used in today's Web 2.0 applications. This book is both an example-driven programmer's guide and a keep-on-your-desk reference, with new chapters that explain everything you need to know to get the most out of JavaScript, including: Scripted HTTP and Ajax XML processing Client-side graphics using the canvas tag Namespaces in JavaScript--essential when writing complex programs Classes, closures, persistence, Flash, and JavaScript embedded in Java applications Part I explains the core JavaScript language in detail. If you are new to JavaScript, it will teach you the language. If you are already a JavaScript programmer, Part I will sharpen your skills and deepen your understanding of the language. Part II explains the scripting environment provided by web browsers, with a focus on DOM scripting with unobtrusive JavaScript. The broad and deep coverage of client-side JavaScript is illustrated with many sophisticated examples that demonstrate how to: Generate a table of contents for an HTML document Display DHTML animations Automate form validation Draw dynamic pie charts Make HTML elements draggable Define keyboard shortcuts for web applications Create Ajax-enabled tool tips Use XPath and XSLT on XML documents loaded with Ajax And much more Part III is a complete reference for core JavaScript. It documents every class, object, constructor, method, function, property, and constant defined by JavaScript 1.5 and ECMAScript Version 3. Part IV is a reference for client-side JavaScript, covering legacy web browser APIs, the standard Level 2 DOM API, and emerging standards such as the XMLHttpRequest object and the canvas tag. More than 300,000 JavaScript programmers around the world have madethis their indispensable reference book for building JavaScript applications. \"A must-have reference for expert JavaScript programmers...well-organized and detailed.\" -- Brendan Eich, creator of JavaScript",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780596554477"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0596554478"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 1022,
+                "printType": "BOOK",
+                "categories": ["Computers"],
+                "averageRating": 4,
+                "ratingsCount": 54,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.9.5.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=2weL0iAfrEMC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=2weL0iAfrEMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.jp/books?id=2weL0iAfrEMC&pg=PA235&dq=JavaScript&hl=&cd=7&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=2weL0iAfrEMC&dq=JavaScript&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/JavaScript_The_Definitive_Guide.html?hl=&id=2weL0iAfrEMC"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true
+                },
+                "pdf": {
+                    "isAvailable": true
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=2weL0iAfrEMC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> language. Part II moves on to <b>JavaScript</b> as used within web browsers, commonly called client-side <b>JavaScript</b>.* Most of the examples you&#39;ve seen so far, while legal <b>JavaScript</b> code, have no particu- lar context; they are&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "U69Hzz2jLPUC",
+            "etag": "rcznhzzvFsw",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/U69Hzz2jLPUC",
+            "volumeInfo": {
+                "title": "JavaScript, A Beginner's Guide, Third Edition",
+                "authors": ["John Pollock"],
+                "publisher": "McGraw Hill Professional",
+                "publishedDate": "2009-11-19",
+                "description": "Essential Skills--Made Easy! Create dynamic Web pages complete with special effects using today's leading Web development language. JavaScript: A Beginner's Guide, Third Edition gives you step-by-step coverage of the fundamentals, including variables, functions, operators, event handlers, objects, arrays, strings, forms, and frames. You'll also learn about more advanced techniques, including debugging and security. This hands-on guide explains how JavaScript works with XHTML Transitional and covers the new features available in JavaScript. Get started using JavaScript right away with help from this fast-paced tutorial. Designed for Easy Learning: Key Skills & Concepts--Chapter-opening lists of specific skills covered in the chapter Ask the Expert--Q & A sections filled with bonus information and helpful tips Try This--Hands-on exercises that show you how to apply your skills Notes--Extra information related to the topic being covered Tips--Helpful reminders or alternate ways of doing things Self Tests--End-of-chapter reviews to test your knowledge Annotated syntax--Example code with commentary that describes the programming techniques being illustrated",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780071632966"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0071632964"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 512,
+                "printType": "BOOK",
+                "categories": ["Computers"],
+                "averageRating": 5,
+                "ratingsCount": 2,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.13.5.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=U69Hzz2jLPUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=U69Hzz2jLPUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.jp/books?id=U69Hzz2jLPUC&pg=PA17&dq=JavaScript&hl=&cd=8&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=U69Hzz2jLPUC&dq=JavaScript&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/JavaScript_A_Beginner_s_Guide_Third_Edit.html?hl=&id=U69Hzz2jLPUC"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/JavaScript_A_Beginner_s_Guide_Third_Edit-sample-epub.acsm?id=U69Hzz2jLPUC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.jp/books/download/JavaScript_A_Beginner_s_Guide_Third_Edit-sample-pdf.acsm?id=U69Hzz2jLPUC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=U69Hzz2jLPUC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> . You do this by adding the type attribute with the value of &quot; text / <b>javascript</b> &quot; to the opening script tag : &lt; script type = &quot; text / <b>javascript</b> &quot; &gt; &lt; <b>JavaScript</b> code here &lt; / script &gt; Tells the browser the scripting&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "CxY3lNQTATQC",
+            "etag": "I5H+rFSOdbw",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/CxY3lNQTATQC",
+            "volumeInfo": {
+                "title": "JavaScript: The Missing Manual",
+                "subtitle": "The Missing Manual",
+                "authors": ["David Sawyer McFarland"],
+                "publisher": "\"O'Reilly Media, Inc.\"",
+                "publishedDate": "2008-07-21",
+                "description": "JavaScript is an essential language for creating modern, interactive websites, but its complex rules challenge even the most experienced web designers. With JavaScript: The Missing Manual, you'll quickly learn how to use JavaScript in sophisticated ways -- without pain or frustration -- even if you have little or no programming experience. JavaScript expert David McFarland first teaches you the basics by having you build a simple program. Then you'll learn how to work with jQuery, a popular library of pre-built JavaScript components that's free and easy to use. With jQuery, you can quickly build modern, interactive web pages -- without having to script everything from scratch! Learn how to add scripts to a web page, store and manipulate information, communicate with the browser window, respond to events like mouse clicks and form submissions, and identify and modify HTML Get real-world examples of JavaScript in action Learn to build pop-up navigation bars, enhance HTML tables, create an interactive photo gallery, and make web forms more usable Create interesting user interfaces with tabbed panels, accordion panels, and pop-up dialog boxes Learn to avoid the ten most common errors new programmers make, and how to find and fix bugs Use JavaScript with Ajax to communicate with a server so that your web pages can receive information without having to reload",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780596555306"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "059655530X"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 547,
+                "printType": "BOOK",
+                "categories": ["Computers"],
+                "averageRating": 4.5,
+                "ratingsCount": 8,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.9.9.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=CxY3lNQTATQC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=CxY3lNQTATQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.jp/books?id=CxY3lNQTATQC&pg=PA25&dq=JavaScript&hl=&cd=9&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=CxY3lNQTATQC&dq=JavaScript&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/JavaScript_The_Missing_Manual.html?hl=&id=CxY3lNQTATQC"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true
+                },
+                "pdf": {
+                    "isAvailable": true
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=CxY3lNQTATQC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> file to a Web page , you need to specify a URL for the src attribute of the &lt; script &gt; tag . A URL or ... <b>JavaScript</b> file . If you have multiple levels of folders on your Web site , you&#39;ll need to use different paths to&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "MrHaC5HAva8C",
+            "etag": "xTSlvwcxLwA",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/MrHaC5HAva8C",
+            "volumeInfo": {
+                "title": "The Book of JavaScript, 2nd Edition",
+                "subtitle": "A Practical Guide to Interactive Web Pages",
+                "authors": ["thau!"],
+                "publisher": "No Starch Press",
+                "publishedDate": "2007",
+                "description": "Explains how to use the programming language to add interactivity and animation to Web sites, covering image swaps, functions, frames, cookies, alarms, frames, shopping carts, and Ajax.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781593271060"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1593271069"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 528,
+                "printType": "BOOK",
+                "categories": ["Computers"],
+                "averageRating": 3.5,
+                "ratingsCount": 4,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "2.4.4.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=MrHaC5HAva8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=MrHaC5HAva8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.jp/books?id=MrHaC5HAva8C&pg=PA7&dq=JavaScript&hl=&cd=10&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=MrHaC5HAva8C&dq=JavaScript&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Book_of_JavaScript_2nd_Edition.html?hl=&id=MrHaC5HAva8C"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true
+                },
+                "pdf": {
+                    "isAvailable": true
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=MrHaC5HAva8C&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "... <b>JavaScript</b> in the page without permission from recalcitrant administrators. VBScript. The language most similar to <b>JavaScript</b> is Microsoft&#39;s ... <b>JavaScript</b>! 7 VBScript Java Flash <b>JavaScript&#39;s</b> Limitations <b>JavaScript</b> Can&#39;t Talk to Servers."
+            }
+        }
+    ]
+}

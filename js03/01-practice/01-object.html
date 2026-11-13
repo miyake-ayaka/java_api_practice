@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript | オブジェクト</title>
+</head>
+<body>
+<h1>オブジェクト</h1>
+<script>
+// オブジェクトの宣言
+let user = {
+    name: 'ラッコ',
+    age: 5,
+    region: '日本',
+};
+
+// オブジェクトの中身を取得
+console.log(user);
+
+
+// オブジェクトの値を変更（ age を 6 に変更 ）
+user.age = 6;
+console.log(user.age);
+
+
+
+// オブジェクトに新しいプロパティ（ hobby 魚釣り ）を追加
+user.hobby = "魚釣り";
+console.log(user);
+
+
+
+// ネストしたオブジェクトの例
+let userProfile = {
+    name: 'ラッコ',
+    age: 5,
+    region: '日本',
+    contact: {
+        email: 'rakko@example.com',
+        phone: '090-1234-5678',
+    },
+};
+
+// ネストしたオブジェクトの値を取得（ rakko@example.com を表示 ）
+console.log(userProfile);
+console.log(userProfile.contact);
+console.log(userProfile.contact.email);
+
+
+
+
+</script>
+</body>
+</html>

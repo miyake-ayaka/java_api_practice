@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript | 繰り返し処理：for</title>
+</head>
+<body>
+<h1>繰り返し処理：for</h1>
+<script>
+// ------------------------------------------------------------------------
+// for (カウンタの初期値; 繰り返しを続ける条件; カウンタの更新) {
+//     条件がtrueの間、繰り返される処理
+// }
+// ------------------------------------------------------------------------
+
+console.log("for文の基本--------------------------------");
+
+for (let i = 0; i < 5; i++) {
+    console.log("繰り返し処理");
+    console.log("i の値:" + i);
+}
+
+console.log("\n"); // 改行
+console.log("for文と配列の組み合わせ--------------------------------");
+const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+
+for(let i = 0; i < weekdays.length; i++){
+    console.log(`曜日：${weekdays[i]}`)
+
+}
+
+
+
+console.log("\n"); // 改行
+console.log("forEachメソッドと配列の組み合わせ--------------------------------");
+
+// 配列メソッドforEachを使用
+weekdays.forEach((weekday) => {
+    console.log(weekday);
+});
+
+
+</script>
+</body>
+</html>

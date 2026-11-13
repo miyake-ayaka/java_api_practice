@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- axios モジュール読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>本検索システム</title>
+</head>
+<body>
+<div class="container py-2">
+    <h1 class="title is-2 has-text-primary">
+        Google Books API
+    </h1>
+    <div class="field is-grouped mb-4">
+        <div class="control">
+            <input id="keyword" class="input" disabled type="text" placeholder="キーワードを入力" style="width: 300px;">
+        </div>
+        <div class="control">
+            <button id="search" class="button is-primary" disabled>検索</button>
+        </div>
+    </div>
+    <p class="subtitle is-5 has-text-grey">
+        ※ Google Books API で "JavaScript" と検索した結果が表示されます
+    </p>
+    <ul id="list" class="box">
+        <!-- 結果を表示する -->
+    </ul>
+</div>
+
+<script>
+// 実際のURLは https://www.googleapis.com/books/v1/volumes?q=JavaScript
+// 今回URLはダミーのJSONファイルを使用 - ./api/googlebooks-javascript.json を使用
+const url = "./api/googlebooks-javascript.json";
+
+// axiosを使って情報を取得する
+
+// axios の使い方 ------------------------------------------------------------
+// axios.get(): GET 通信, axios.post(): POST 通信
+// .then(): 通信が成功した場合の処理
+// function (response) {}: response は通信の結果 の引数
+// --------------------------------------------------------------------------
+
+// get通信の場合は get(), post通信の場合は post() を使用する
+axios.get(url).then(function (response) {
+    // ----------------------------
+    // response の中身を確認
+    // ----------------------------
+
+    // ★ response を console.log で確認
+
+    // ★ ステータスコード、データを確認
+
+    // ----------------------------
+    // Google Books API のデータを加工して表示
+    // ----------------------------
+
+    // ★ response.data の内容と公式リファレンスを確認する
+    // リファレンス: https://developers.google.com/books/docs/v1/using?hl=ja
+
+
+    // ★ items を定数として取り出す
+
+    
+    
+    // items を forEach で繰り返し、 li タグを作成して、 #list に追加
+
+    // items.forEach(function (item) {
+    //     $("#list").append(
+    //         `<li class="mb-2 p-3 has-background-light">${item.volumeInfo.title}（著者: ${item.volumeInfo.authors ? item.volumeInfo.authors.join(", ") : "不明"}）</li>`
+    //     );
+    // });
+});
+</script>
+</body>
+</html>
