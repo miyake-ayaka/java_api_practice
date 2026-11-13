@@ -10,19 +10,27 @@
 <h1>関数の宣言・引数</h1>
 <script>
 // 挨拶その1
-console.log('こんにちは');
-console.log('いい天気ですね');
+// console.log('こんにちは');
+// console.log('いい天気ですね');
 
-// 挨拶その2
-console.log('こんにちは');
-console.log('いい天気ですね');
+// // 挨拶その2
+// console.log('こんにちは');
+// console.log('いい天気ですね');
 
 // 挨拶関数 greet() を作成
-
-
+// function greet() {
+//     console.log('こんにちは');
+//     console.log('いい天気ですね');
+// }
+// greet();
+// greet();
 
 // 引数つき挨拶関数 greet(name) に変更
-
+function greet(name) {
+    console.log(`こんにちは ${name} さん`);
+    console.log('いい天気ですね');
+}
+greet("miyake");
 
 // 複数の引数を取得する関数 fullGreet(firstName, lastName)
 
@@ -30,6 +38,7 @@ function fullGreet(firstName, lastName) {
     console.log(`こんにちは ${firstName} ${lastName} さん`);
     console.log('いい天気ですね');
 }
+fullGreet("ayaka", "miyake");
 
 </script>
 </body>
