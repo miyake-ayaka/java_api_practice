@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- axios 読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery 読み込み -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>本検索システム</title>
+</head>
+<body>
+<div class="container py-2">
+    <h1 class="title is-2 has-text-primary">
+        Open Library API
+    </h1>
+    <div class="field is-grouped mb-4">
+        <div class="control">
+            <input id="keyword" class="input" type="text" placeholder="キーワードを入力" style="width: 250px;">
+        </div>
+        <div class="control">
+            <button id="search" class="button is-primary">検索</button>
+        </div>
+    </div>
+    <p id="count" class="mb-2 has-text-grey"></p>
+    <ul id="list">
+        <li class="box">検索結果がここに表示されます</li>
+    </ul>
+</div>
+
+<script>
+// ----------------------------
+// 動画「js04-06 Google Books API」の完成版の読み替えです
+// Open Library API: https://openlibrary.org/dev/docs/api/search
+// ----------------------------
+
+$("#search").on("click", function () {
+    $("#list").empty(); // 結果をクリア
+    $("#count").text("検索中..."); // 通信中の表示
+
+    const keyword = $("#keyword").val(); // キーワードを取得
+    const url = "https://openlibrary.org/search.json"; // APIのURL
+
+    // params に書いた内容は ?q=キーワード&limit=10 の形でURLに付けて送られる
+    axios.get(url, {
+        params: {
+            q: keyword,
+            limit: 10
+        }
+    }).then(function (response) {
+        const docs = response.data.docs; // 本の一覧を取得
+        $("#count").text(`${response.data.numFound} 件見つかりました（上位10件を表示）`);
+
+        docs.forEach(function (doc) {
+            // 著者は配列で返ってくる。無い本もあるので、あるときだけ join する
+            const author = doc.author_name ? doc.author_name.join(", ") : "不明";
+
+            // 表紙画像は cover_i（表紙の番号）があるときだけ表示する
+            let cover = "";
+            if (doc.cover_i) {
+                cover = `<img src="https://covers.openlibrary.org/b/id/${doc.cover_i}-S.jpg" alt="表紙" style="height: 64px;">`;
+            }
+
+            $("#list").append(`
+                <li class="box is-flex" style="gap: 16px; align-items: center;">
+                    <div style="width: 48px;">${cover}</div>
+                    <div>
+                        <p class="has-text-weight-bold">${doc.title}</p>
+                        <p class="is-size-7 has-text-grey">著者: ${author} ／ 初版: ${doc.first_publish_year || "不明"}年</p>
+                    </div>
+                </li>
+            `);
+        });
+    }).catch(function (error) {
+        // 通信に失敗したとき
+        $("#count").text("通信に失敗しました。時間をおいて試してください。");
+        console.log(error);
+    });
+});
+</script>
+</body>
+</html>

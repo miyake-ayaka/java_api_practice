@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- axios 読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery 読み込み -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>本検索システム（練習）</title>
+</head>
+<body>
+<div class="container py-2">
+    <h1 class="title is-2 has-text-primary">
+        Open Library API（練習）
+    </h1>
+    <p class="subtitle is-5 has-text-grey">
+        ※ Open Library API で "JavaScript" と検索した結果を表示します
+    </p>
+    <ul id="list" class="box">
+        <!-- 結果を表示する -->
+    </ul>
+</div>
+
+<script>
+// ----------------------------
+// 動画「js04-06 Google Books API」の読み替え用です
+// Google Books API の代わりに Open Library API を使います（APIキー不要）
+// ----------------------------
+
+// APIのURL（ブラウザのアドレスバーに貼り付けると、返ってくるJSONを直接見られます）
+const url = "https://openlibrary.org/search.json?q=JavaScript&limit=10";
+
+// axios の使い方 ------------------------------------------------------------
+// axios.get(): GET 通信, axios.post(): POST 通信
+// .then(): 通信が成功した場合の処理
+// function (response) {}: response は通信の結果 の引数
+// --------------------------------------------------------------------------
+
+axios.get(url).then(function (response) {
+    // ----------------------------
+    // response の中身を確認
+    // ----------------------------
+
+    // ★ response を console.log で確認
+
+
+    // ★ ステータスコード（response.status）、データ（response.data）を確認
+
+
+    // ----------------------------
+    // Open Library API のデータを加工して表示
+    // ----------------------------
+
+    // ★ response.data の内容と公式リファレンスを確認する
+    // リファレンス: https://openlibrary.org/dev/docs/api/search
+    // ヒント: Google Books は items に本の一覧が入っていたが、Open Library は docs に入っている
+
+
+    // ★ docs を定数として取り出す
+
+
+
+    // docs を forEach で繰り返し、 li タグを作成して、 #list に追加
+    // ヒント: タイトルは doc.title、著者は doc.author_name（配列）
+
+    // docs.forEach(function (doc) {
+    //     $("#list").append(
+    //         `<li class="mb-2 p-3 has-background-light">${doc.title}（著者: ${doc.author_name ? doc.author_name.join(", ") : "不明"}）</li>`
+    //     );
+    // });
+});
+</script>
+</body>
+</html>

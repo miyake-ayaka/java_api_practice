@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- axios 読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery 読み込み -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>今いる場所の天気</title>
+</head>
+<body>
+<div class="container py-2">
+    <h1 class="title is-2 has-text-info">
+        今いる場所の天気
+    </h1>
+    <p class="subtitle is-6 has-text-grey">
+        ブラウザの位置情報（Geolocation API）と Open-Meteo API を組み合わせた例です
+    </p>
+    <button id="get" class="button is-info mb-4">現在地の天気を調べる</button>
+    <div id="result" class="box">ボタンを押すと、ブラウザが位置情報の利用を確認してきます。「許可」を選んでください</div>
+</div>
+
+<script>
+// ----------------------------
+// 2つのAPIを組み合わせて「今いる場所の天気」を表示する例です
+//
+// 1つめのAPI: Geolocation API（ブラウザに入っている。現在地の緯度・経度がわかる）
+// 2つめのAPI: Open-Meteo API（緯度・経度を渡すと天気がわかる）
+// → 1つめの結果を、2つめに渡す。これが「APIを組み合わせる」ということ
+// ----------------------------
+
+function weatherText(code) {
+    if (code === 0) return "快晴";
+    if (code <= 3) return "晴れ・くもり";
+    if (code <= 48) return "霧";
+    if (code <= 67) return "雨";
+    if (code <= 77) return "雪";
+    if (code <= 82) return "にわか雨";
+    if (code <= 86) return "にわか雪";
+    return "雷雨";
+}
+
+// 緯度・経度を受け取って、天気を表示する関数
+function showWeather(lat, lon) {
+    axios.get("https://api.open-meteo.com/v1/forecast", {
+        params: {
+            latitude: lat,
+            longitude: lon,
+            current: "temperature_2m,weather_code,wind_speed_10m",
+            timezone: "Asia/Tokyo"
+        }
+    }).then(function (response) {
+        const current = response.data.current;
+        $("#result").html(`
+            <p class="is-size-7 has-text-grey">緯度 ${lat.toFixed(3)} / 経度 ${lon.toFixed(3)}</p>
+            <p class="is-size-3 has-text-weight-bold">${weatherText(current.weather_code)} ${current.temperature_2m}℃</p>
+            <p>風速 ${current.wind_speed_10m} km/h</p>
+        `);
+    }).catch(function (error) {
+        $("#result").text("天気の取得に失敗しました。");
+        console.log(error);
+    });
+}
+
+$("#get").on("click", function () {
+    $("#result").text("現在地を取得中...");
+
+    // 1つめのAPI: 現在地を取得する
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            // 取得できたとき → 2つめのAPIに緯度・経度を渡す
+            showWeather(position.coords.latitude, position.coords.longitude);
+        },
+        function (error) {
+            // 取得できなかったとき（許可しなかった、など）→ 東京の天気を表示する
+            $("#result").text("現在地を取得できなかったので、東京の天気を表示します");
+            showWeather(35.6895, 139.6917);
+        }
+    );
+});
+</script>
+</body>
+</html>
