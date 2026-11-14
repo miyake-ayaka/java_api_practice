@@ -30,7 +30,7 @@
 // ----------------------------
 
 // APIのURL（ブラウザのアドレスバーに貼り付けると、返ってくるJSONを直接見られます）
-const url = "https://openlibrary.org/search.json?q=JavaScript&limit=10";
+const url = "https://openlibrary.org/search.json?q=JavaScript&limit=10&lang=ja";
 
 // axios の使い方 ------------------------------------------------------------
 // axios.get(): GET 通信, axios.post(): POST 通信
@@ -44,9 +44,12 @@ axios.get(url).then(function (response) {
     // ----------------------------
 
     // ★ response を console.log で確認
+    console.log(response);
 
 
     // ★ ステータスコード（response.status）、データ（response.data）を確認
+    console.log(response.status);
+    console.log(response.data); 
 
 
     // ----------------------------
@@ -55,15 +58,23 @@ axios.get(url).then(function (response) {
 
     // ★ response.data の内容と公式リファレンスを確認する
     // リファレンス: https://openlibrary.org/dev/docs/api/search
-    // ヒント: Google Books は items に本の一覧が入っていたが、Open Library は docs に入っている
+    // ヒント: Google Books は items に本の一覧が入っていたが、Open Library は docs に入っている]
 
 
     // ★ docs を定数として取り出す
+    const docs = response.data.docs;
+    console.log("docsの内容");
+    console.log(docs);
 
 
 
     // docs を forEach で繰り返し、 li タグを作成して、 #list に追加
     // ヒント: タイトルは doc.title、著者は doc.author_name（配列）
+    docs.forEach(function (doc) {
+        $("#list").append(
+            `<li class="mb-2 p-3 has-background-light">${doc.title}（著者: ${doc.author_name ? doc.author_name.join(", ") : "不明"}）</li>`
+        );
+    });
 
     // docs.forEach(function (doc) {
     //     $("#list").append(
