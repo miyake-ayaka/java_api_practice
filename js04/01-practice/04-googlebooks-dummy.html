@@ -51,8 +51,11 @@ axios.get(url).then(function (response) {
     // ----------------------------
 
     // ★ response を console.log で確認
+    console.log(response);
 
     // ★ ステータスコード、データを確認
+    const data = response.data;
+    console.log("status=" + response.status);
 
     // ----------------------------
     // Google Books API のデータを加工して表示
@@ -63,16 +66,16 @@ axios.get(url).then(function (response) {
 
 
     // ★ items を定数として取り出す
-
-    
+    const items = data.items;
+        
     
     // items を forEach で繰り返し、 li タグを作成して、 #list に追加
 
-    // items.forEach(function (item) {
-    //     $("#list").append(
-    //         `<li class="mb-2 p-3 has-background-light">${item.volumeInfo.title}（著者: ${item.volumeInfo.authors ? item.volumeInfo.authors.join(", ") : "不明"}）</li>`
-    //     );
-    // });
+    items.forEach(function (item) {
+        $("#list").append(
+            `<li class="mb-2 p-3 has-background-light">${item.volumeInfo.title}（著者: ${item.volumeInfo.authors ? item.volumeInfo.authors.join(", ") : "不明"}）</li>`
+        );
+    });
 });
 </script>
 </body>
